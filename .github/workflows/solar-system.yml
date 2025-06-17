@@ -29,7 +29,7 @@ jobs:
           run: npm install
         
         - name: running coverage code 
-          run: npm run code-coverage
+          run: npm run coverage
         
         - name: Archive Test Result
           if: always()
