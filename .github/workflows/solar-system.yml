@@ -13,6 +13,32 @@ env:
   MONGO_PASSWORD: ${{secrets.MONGO_PASSWORD}}
     
 jobs:
+    coverage:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checckout Repo 
+          uses: actions/checkout@v4
+          
+        - name: setup-node
+          uses: actions/node-setup@v4
+          with:
+            node-version: 20
+          
+        - name: installing dependencies
+          run: npm install
+        
+        - name: running coverage code 
+          run: npm run code-coverage
+        
+        - name: Archive Test Result
+          if: always()
+          uses: actions/upload-artifact@v3
+          with:
+            name: Code-Coverage-Result
+            path: coverage
+            retention-days: 5
+
     unit-testing:
         name: Unit Testing
         runs-on: ubuntu-latest
