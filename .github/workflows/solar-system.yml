@@ -13,7 +13,7 @@ env:
   MONGO_PASSWORD: ${{secrets.MONGO_PASSWORD}}
     
 jobs:
-    coverage:
+    code-coverage:
       runs-on: ubuntu-latest
 
       steps:
